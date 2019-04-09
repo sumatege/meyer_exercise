@@ -1,7 +1,80 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Home - GitHub Repository";
 }
 
-<img src="~/images/page_logo.png" />
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="~/Content/stylesheet.css">
 
+<div class="container-fluid">
+    <a href="javascript:" id="go-to-top"><i class="fas fa-chevron-up"></i></a>
+    <div class="row">
+        <a href="Index"><img src="~/images/page_logo.png" style="margin-top:10px;margin-bottom:10px;" /></a>
+    </div>
+
+    <div class="row">
+        <div class="form-inline form-group input-group col-md-3" style="position: relative; float: right;">
+            <input type="text" class="form-control" placeholder="Enter GitHub user" id="searchKeyword" sty />
+            <span class="input-group-addon">
+                <i class="fa fa-search" style="color:#ff5833;"></i>
+            </span>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <table class="table table-hover table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>GitHub Users</th>
+                    <th style="width:10%">More Detail</th>
+                </tr>
+            </thead>
+            <tbody id="user_table"></tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#searchKeyword").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#user_table tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+
+    $(document).ready(function () {
+        $.getJSON("https://api.github.com/users", function (data) {
+            var user_data = '';
+            $.each(data, function (key, value) {
+                user_data += '<tr>';
+                user_data += '<td><a href=\"Repos/' + value.login + '\">' + value.login + '</a></td>'
+                user_data += '<td style=\"text-align:center;\"><a href=\"Repos/' + value.login + '\"><i class=\"far fa-file-alt\"></i></a></td>'
+                user_data += '</tr>';
+            });
+            $('#user_table').append(user_data);
+        });
+    });
+    
+    $(window).scroll(function () {
+        if ($(this).scrollTop() >= 50) {
+            $('#go-to-top').fadeIn(200);
+        } else {
+            $('#go-to-top').fadeOut(200);
+        }
+    });
+    $('#go-to-top').click(function () {
+        $('body,html').animate({
+            scrollTop: 0                   
+        }, 500);
+    });
+
+</script>
