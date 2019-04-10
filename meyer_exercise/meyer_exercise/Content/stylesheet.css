@@ -9,7 +9,7 @@
     width:100%;
 }
 
-.row, footer {
+.box-set-marg, footer {
     margin-left: 200px;
     margin-right: 200px;
 }
@@ -21,9 +21,9 @@
     padding-top: 20px;
     padding-bottom: 20px;
     background-color: azure;
-    box-shadow: inset;
-    background-color:#000099;
-    vertical-align:middle;
+    background-color: #000099;
+    vertical-align: middle;
+    box-shadow: inset 0px 10px 10px -12px rgba(0,0,0,0.75);
 }
 
 .nav-content {
@@ -46,7 +46,6 @@ table th {
     vertical-align: middle;
     background-color: #d8e5e5;
     padding: 30px;
-    height: auto;
 }
 
 table {
@@ -55,6 +54,10 @@ table {
     border: 1px solid gainsboro;
     background-color:azure;
     color: darkblue;
+}
+
+td{
+    padding-left: 15px;
 }
 
 #go-to-top {
@@ -161,4 +164,55 @@ table {
     100% {
         transform: translate(-50%,-50%) rotate(0deg);
     }
+}
+
+.user-detail-box {
+    background-color: rgba(255,255,255, 0.85);
+    border-radius: 5px;
+    width: 100%;
+    height: auto;
+    min-height: 100% !important;
+    padding-top: 50px;
+    padding-right: 100px;
+    padding-left: 100px;
+    padding-bottom: 50px;
+    display: flex;
+    flex-flow: column wrap;
+    box-shadow: 10px 10px 16px -13px rgba(0,0,0,1);
+}
+
+#user_img {
+    width: 200px;
+    border: 3px solid #000099;
+    border-radius: 10px;
+}
+
+.user_table_repos td{
+    height:100px;
+}
+
+.repos_head {
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.repos_desc {
+    font-size: 14px;
+    font-weight: lighter;
+    font-style: normal;
+    margin-left: 10px;
+    color: darkgray;
+}
+
+.user_clone_url{
+    width: 100%;
+}
+
+i{
+    cursor: pointer;
+}
+
+.user_table_username{
+    height: 50px;
 }

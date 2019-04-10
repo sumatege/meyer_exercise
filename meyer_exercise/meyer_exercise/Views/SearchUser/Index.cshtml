@@ -14,8 +14,8 @@
 
 <script>
     $(document).ready(function () {
-        $("#preload").delay(2500).fadeOut("slow");
-        $("#main-contain").delay(2500).fadeIn("slow"); 
+        $("#preload").delay(1000).fadeOut("slow");
+        $("#main-contain").delay(1000).fadeIn("slow"); 
     });    
 </script>
 
@@ -29,7 +29,7 @@
 <div class="container container-fluid" id="main-contain" style="display:none;">
     <a href="javascript:" id="go-to-top"><i class="fas fa-chevron-up"></i></a>
     <div class=" web-header">
-        <div class="row">
+        <div class="row box-set-marg">
             <a href="Index"><img src="~/images/page_logo.png" style="margin-top:50px;" /></a>
         </div>
     </div>
@@ -41,18 +41,17 @@
     </div>
     <div class="web-content">
         <br /><br />
-        <div class="row">
+        <div class="row box-set-marg">
             <div class="form-inline form-group input-group col-md-3" style="position: relative; float: right;">
                 <input type="text" class="form-control" placeholder="Enter GitHub user" id="searchKeyword" sty />
                 <span class="input-group-addon">
                     <i class="fa fa-search" style="color:#ff5833;"></i>
                 </span>
-
             </div>
         </div>
 
-        <div class="row">
-            <table class="table table-hover table-bordered">
+        <div class="row box-set-marg">
+            <table class="table table-hover table-bordered user_table_username">
                 <thead>
                     <tr>
                         <th>GitHub Users</th>
@@ -80,16 +79,15 @@
             var user_data = '';
             $.each(data, function (key, value) {
                 var $newLinkTarget = '@Url.Action("Repository")?id=' + value.login;
-
                 user_data += '<tr>';
-                user_data += '<td><a href=\"' + $newLinkTarget + '\">' + value.login + '</a></td>'
-                user_data += '<td style=\"text-align:center;\"><a href=\"Repos/' + value.login + '\"><i class=\"far fa-file-alt\"></i></a></td>'
+                user_data += '<td><i class=\"far fa-user\"  style=\"font-size:medium;color:#2A87B1\"></i>&nbsp;<a href=\"' + $newLinkTarget + '\"  style=\"font-size:16px;color:#2A87B1\">' + value.login + '</a></td>'
+                user_data += '<td style=\"text-align:center;\"><a href=\"' + $newLinkTarget + '\"><i class=\"far fa-file-alt\"  style=\"font-size:20px;color:#2A87B1\"></i></a></td>'
                 user_data += '</tr>';               
             });
             $('#user_table').append(user_data);
         });
     });
-    
+
     $(window).scroll(function () {
         if ($(this).scrollTop() >= 50) {
             $('#go-to-top').fadeIn(200);
@@ -97,10 +95,11 @@
             $('#go-to-top').fadeOut(200);
         }
     });
+
     $('#go-to-top').click(function () {
         $('body,html').animate({
             scrollTop: 0                   
         }, 500);
     });
 
-</script>
+</script> 
