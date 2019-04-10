@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Home - GitHub Repository";
+    ViewBag.Title = ViewBag.User_title + " - GitHub Repository";
 }
 
 <!-- Latest compiled and minified CSS -->
@@ -12,31 +12,18 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="~/Content/stylesheet.css">
 
-<script>
-    $(document).ready(function () {
-        $("#preload").delay(2500).fadeOut("slow");
-        $("#main-contain").delay(2500).fadeIn("slow"); 
-    });    
-</script>
-
-<div class="box" id="preload">
-    <div class="b b1"></div>
-    <div class="b b2"></div>
-    <div class="b b3"></div>
-    <div class="b b4"></div>
-</div>
-
-<div class="container container-fluid" id="main-contain" style="display:none;">
+<div class="container container-fluid" id="main-contain" style="display:block;">
     <a href="javascript:" id="go-to-top"><i class="fas fa-chevron-up"></i></a>
     <div class=" web-header">
         <div class="row">
             <a href="Index"><img src="~/images/page_logo.png" style="margin-top:50px;" /></a>
         </div>
     </div>
-   
+
     <div class="navigation">
         <div class="nav-content">
             <i class="fas fa-angle-double-right"></i> @Html.ActionLink("Home", "Index", "SearchUser", null, new { style = "color: White" })
+            <i class="fas fa-angle-double-right"></i> @Html.ActionLink((string) ViewBag.User_title, "Repository", "SearchUser", new { id = @ViewBag.User_title }, new{ style = "color: White" })
         </div>
     </div>
     <div class="web-content">
@@ -84,12 +71,12 @@
                 user_data += '<tr>';
                 user_data += '<td><a href=\"' + $newLinkTarget + '\">' + value.login + '</a></td>'
                 user_data += '<td style=\"text-align:center;\"><a href=\"Repos/' + value.login + '\"><i class=\"far fa-file-alt\"></i></a></td>'
-                user_data += '</tr>';               
+                user_data += '</tr>';
             });
             $('#user_table').append(user_data);
         });
     });
-    
+
     $(window).scroll(function () {
         if ($(this).scrollTop() >= 50) {
             $('#go-to-top').fadeIn(200);
@@ -99,7 +86,7 @@
     });
     $('#go-to-top').click(function () {
         $('body,html').animate({
-            scrollTop: 0                   
+            scrollTop: 0
         }, 500);
     });
 
