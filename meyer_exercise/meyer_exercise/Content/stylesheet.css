@@ -1,6 +1,6 @@
 ﻿body{
     background-color: #ff5833;
-    padding-top:0px;
+    padding-top: 0px;
 }
 
 .container {
@@ -75,7 +75,6 @@ td{
     display: none;
     -webkit-transition: all 0.3s linear;
     -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
@@ -89,7 +88,6 @@ td{
     font-size: 19px;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
@@ -172,10 +170,7 @@ td{
     width: 100%;
     height: auto;
     min-height: 100% !important;
-    padding-top: 50px;
-    padding-right: 100px;
-    padding-left: 100px;
-    padding-bottom: 50px;
+    padding: 50px;
     display: flex;
     flex-flow: column wrap;
     box-shadow: 10px 10px 16px -13px rgba(0,0,0,1);
@@ -209,10 +204,15 @@ td{
     width: 100%;
 }
 
-i{
+i {
     cursor: pointer;
+    pointer-events: auto;
 }
 
 .user_table_username{
     height: 50px;
+}
+
+.copyBtn {
+    background-color: Transparent;
 }

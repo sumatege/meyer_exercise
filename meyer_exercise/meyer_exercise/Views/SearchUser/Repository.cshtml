@@ -125,13 +125,19 @@
                 user_repos += '<td><span class=\"repos_head\"><i class=\"fas fa-code\"></i>&nbsp;' + value.name + '</span><br/>';
                 user_repos += '<div class=\"repos_desc\" style=\"margin-left: 10px;\">' + value.description + '</div></td>';
                 user_repos += '<td style=\"text-align:center;vertical-align:middle;\"><span class=\"form-inline\">';
-                user_repos += '<input class=\"user_clone_url form-control\" type=\"text\" value=\"' + value.clone_url + '\" id=\"' + value.id + 'txt\" />&nbsp;&nbsp;';
-                user_repos += '<i class=\"far fa-copy\" style=\"font-size:24px;color:#2A87B1\"></i></span></td>';
+                user_repos += '<input class=\"user_clone_url form-control\" type=\"text\" value=\"' + value.clone_url + '\" id=\"' + value.id + 'txt\" />';
+                user_repos += '<button class=\"btn copyBtn\" id=\"' + value.id + '\"><i class=\"far fa-copy copyBtn\" style=\"font-size:24px;color:#2A87B1\"></i></button></span></td>';
                 user_repos += '<td style=\"text-align:center;vertical-align:middle;\"><a href=\"http://api.github.com/repos/' + value.full_name + '/zipball\"><i class=\"far fa-file-archive\" style=\"font-size:25px;color:#2A87B1\"></i></a></td>';
                 user_repos += '</tr>';               
             });
             $('#user_table').append(user_repos);
         });      
+    });
+
+    $(document).on('click', 'button.copyBtn', function (e) {
+        var clone_url = document.getElementById(this.id + "txt");
+        clone_url.select();
+        document.execCommand("copy");
     });
 
     $(window).scroll(function () {
